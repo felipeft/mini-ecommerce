@@ -1,0 +1,19 @@
+# Removemos a linha 'version', que não é mais necessária
+services:
+  postgres:
+    image: postgres:13
+    container_name: mini-ecommerce-db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=miniecommerce
+    # Adicionamos esta seção para criar e usar um volume nomeado
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+# Declaramos o volume nomeado aqui embaixo
+volumes:
+  postgres_data:
